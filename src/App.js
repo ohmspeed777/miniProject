@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-function App() {
+const App = () => {
+  const profile = useSelector((state) => state.test);
+  const changeName = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto text-center">
+      <h1>{profile.name}</h1>
+      <h2>{profile.firstName}</h2>
+      <hr />
+      <button onClick={() => changeName({ name: 'Ohm', type: 'test' })}>
+        Change Name
+      </button>
     </div>
   );
-}
+};
 
 export default App;
