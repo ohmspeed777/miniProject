@@ -1,6 +1,14 @@
-import React from 'react';
+
+import React,{ useState,useEffect } from 'react';
+import { useDispatch } from "react-redux";
+import { fetchSearchPhoto } from "../action";
 
 const Navbar = () => {
+  const [search ,setSearch] = useState("");
+  const disPatch = useDispatch();
+  const handleSearch =()=>{
+    disPatch(fetchSearchPhoto(search))
+  }
   return (
     <div className="container mx-auto navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
       <div className="flex-none hidden lg:flex">
@@ -25,15 +33,17 @@ const Navbar = () => {
       </div>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">
-          <input
+          <input 
             type="text"
+            onChange={e=>setSearch(e.target.value)}
+            value={search}
             placeholder="Search"
             className="input input-ghost"
           />
         </div>
       </div>
       <div className="flex-none">
-        <button className="btn btn-square btn-ghost">
+        <button onClick={handleSearch} className="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
