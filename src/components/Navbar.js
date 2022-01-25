@@ -1,6 +1,7 @@
 
 import React,{ useState,useEffect } from 'react';
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { fetchSearchPhoto } from "../action";
 
 const Navbar = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className="flex-1 hidden px-2 mx-2 lg:flex">
-        <span className="text-lg font-bold">daisyUI</span>
+        <Link to={"/"} className="text-lg font-bold">daisyUI</Link>
       </div>
       <div className="flex-1 lg:flex-none">
         <div className="form-control">

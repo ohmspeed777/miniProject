@@ -3,7 +3,6 @@ import api from '../api';
 
 
 export const fetchRandomPhoto = () => async (dispatch) => {
-
   let photo = localStorage.getItem("photos")
   if(!photo){
     const res = await api.get('/photos/random', {
@@ -19,15 +18,21 @@ export const fetchRandomPhoto = () => async (dispatch) => {
   dispatch({ type: reduxType.FETCH_RANDOM_PHOTO, payload: JSON.parse(photo) });
 };
 
-export const fetchSearchPhoto = (value) => async (dispatch) => {
-
+export const fetchSearchPhoto = (search) => async (dispatch) => {
     const res = await api.get('/search/photos', {
       params: {
-        query: value,
+        count: 12,
+        query: search,
         orientation: 'portrait',
       },
     });
-    console.log(res.data);
-  // console.log(photo);
+    // console.log(res.data);
+  // console.log(photo); 
   dispatch({ type: reduxType.FETCH_SEARCH_PHOTO, payload: res.data.results });
+};
+
+export const fetchUser = (userName) => async (dispatch) => {
+  const res = await api.get(`/users/${userName}/photos`);
+  console.log(res.data);
+dispatch({ type: reduxType.FETCH_SEARCH_USER, payload: res.data });
 };
