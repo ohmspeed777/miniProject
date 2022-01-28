@@ -6,7 +6,9 @@ const reducer = (state = [], action) => {
       return [...action.payload];
     case reduxType.FETCH_SEARCH_PHOTO:
       return [...action.payload];
-    case reduxType.FETCH_SEARCH_USER:
+    case reduxType.FETCH_SEARCH_USERALBUM:
+      return [...action.payload];
+    case reduxType.FETCH_LIKE_PHOTO:
       return [...action.payload];
     default:
       return state;
@@ -14,4 +16,3 @@ const reducer = (state = [], action) => {
 };
 
 export default reducer;
-
